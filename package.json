@@ -1,0 +1,26 @@
+{
+  "name": "msgpack-wasm",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/Tosuke/msgpack-wasm",
+  "author": "Tosuke <tasukeprg@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build:dev": "run-p tsbuild asbuild:dev",
+    "build:prod": "run-p tsbuild asbuild:prod",
+    "tsbuild": "tsc",
+    "asbuild:dev": "asc assembly/index.ts -O0 --runtime none --importMemory -b dist/wasm/msgpack.wasm -t dist/wasm/msgpack.wat --sourceMap --validate",
+    "asbuild:prod": "asc assembly/index.ts -O3 --runtime none --importMemory -b dist/wasm/msgpack.wasm -t dist/wasm/msgpack.wat --sourceMap --validate"
+  },
+  "devDependencies": {
+    "@msgpack/msgpack": "^1.4.6",
+    "@tosuke/prettier-config": "^1.0.1",
+    "@types/node": "^12.6.2",
+    "assemblyscript": "Assemblyscript/assemblyscript",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {}
+}
